@@ -1,0 +1,271 @@
+@font-face {
+  font-family: Magic;
+  src: url("MagicSchoolOne.ttf")
+}
+
+@font-face {
+  font-family: SourceSansPro;
+  src: url("SourceSansPro-Regular.ttf")
+}
+
+*{
+  font-family: SourceSansPro;
+  outline: none;
+}
+
+
+body {
+  margin: 40px;
+  text-align: center;
+}
+
+.spellType {
+  text-align:center;
+  font-size: 50px;
+  margin: 10px;
+  font-family: Magic;
+}
+
+.spellName {
+  text-align:center;
+  font-size: 18px;
+  margin: 5px;
+  font-weight:bold;
+}
+
+.spellCast {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid #2573e9;
+  background: #acc6ec;
+  border-radius: 2px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  font-size: 25px;
+}
+
+.spellUpg {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #2573e9;
+  background: #acc6ec;
+  border-radius: 2px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.spellUpg:hover {
+  background: #8494ac;
+}
+
+.spellUpgLocked {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #2573e9;
+  background: #3c4046;
+  border-radius: 2px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.focusUpg {
+  width: 150px;
+  height: 30px;
+  border: 1px solid #2573e9;
+  background: #acc6ec;
+  border-radius: 2px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.focusUpg:hover {
+  background: #8494ac;
+}
+
+.focusLocked {
+  width: 150px;
+  height: 30px;
+  border: 1px solid #2573e9;
+  background: #3c4046;
+  border-radius: 2px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.castLocked {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid #2573e9;
+  background: #3c4046;
+  border-radius: 2px;
+  transition-duration: 0.3s;
+  font-size: 25px;
+}
+
+.spellCast:hover {
+  background: #88a4ca;
+  border-bottom: 2px solid #0f53b9;
+}
+
+.spellDiv {
+  border: 2px solid rgb(107, 107, 107);
+  height: 320px;
+  width: 180px;
+  text-align:center;
+  margin: auto 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.targetSelect {
+  width: 150px;
+  height: 30px;
+  font-size: 14px;
+  background: rgb(50, 121, 214);
+  color: rgb(7, 7, 7);
+  border: none;
+  border-radius: 4px;
+}
+
+.casterBtnOn {
+  width: 150px;
+  height: 30px;
+  background: rgb(79, 137, 212);
+  border:none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  transition-duration: 0.3s;
+}
+
+.casterBtnOn:hover {
+  background: rgb(112, 159, 212);
+}
+
+.casterBtnOff {
+  width: 150px;
+  height: 30px;
+  background: rgb(196, 196, 196);
+  border:none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  transition-duration: 0.3s;
+}
+
+.casterBtnOff:hover {
+  background: rgb(133, 151, 170);
+}
+
+#mana {
+    width: 98%;
+    background-color: #A3A3A3;
+    border-radius: 5px;
+
+}
+
+#currentMana {
+    width: 0%;
+    height: 23px;
+    background-color: #2764c6;
+    color: black;
+    font-size: 16px;
+    border-radius: 5px;
+    transition-duration: 0.1s;
+}
+
+.popup {
+    position: absolute;
+    left: 40%;
+    top: 33%;
+    border: 3px solid black;
+    width: 300px;
+    height: 120px;
+    background-color: #E0E0E0;
+    border-radius: 6px;
+    text-align:center;
+    z-index: 2;
+    color: black;
+    font-family: SourceSansPro;
+    padding: 10px;
+    padding-bottom: 15px;
+    display: none;
+}
+
+.storebtn {
+    color: black;
+    background: #F2F2F2;
+    font-weight: bold;
+    font-family: SourceSansPro;
+    border: 1px solid #127A20;
+    width: 120px;
+    height: 25px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+    vertical-align: top;
+}
+
+[ach-tooltip] {
+    position: relative;
+    z-index: 2;
+}
+
+[ach-tooltip]:before,
+[ach-tooltip]:after {
+    visibility: hidden;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+[ach-tooltip]:before {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 5px;
+    margin-left: -80px;
+    padding: 7px;
+    width: 160px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #000;
+    background-color: hsla(0, 0%, 5%, 0.9);
+    color: #fff;
+    content: attr(ach-tooltip);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+    transition-duration: .2s;
+    white-space: pre;
+
+}
+
+[ach-tooltip]:after {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    border-top: 5px solid #000;
+    border-top: 5px solid hsla(0, 0%, 5%, 0.9);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+    transition-duration: .2s;
+}
+
+[ach-tooltip]:hover:before,
+[ach-tooltip]:hover:after {
+    visibility: visible;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+}
