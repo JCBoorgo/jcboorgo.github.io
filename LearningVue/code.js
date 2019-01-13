@@ -38,11 +38,17 @@ var app4 = new Vue({
 var app5 = new Vue({
   el: "#app-5",
   data: {
-    message: "Oh, hi!"
+    message: "Oh, hi!",
+    clicked: false
   },
   methods: {
-    reverseMessage: function(){
-      this.message = "8===D";
+    reverseMessage: function() {
+      if (!this.clicked) {
+        this.message = "8===D";
+        this.clicked = true;
+      } else {
+        this.message = this.message.slice(0, 2) + "=" + this.message.slice(2);
+      }
     }
   }
 });
