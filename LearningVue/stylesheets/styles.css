@@ -24,3 +24,8 @@ body {
   font-family: Magic;
   font-size: 50px;
 }
+
+#warning {
+  text-align: center;
+  font-size: 30px;
+}
