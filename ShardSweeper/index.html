@@ -12,7 +12,7 @@
 
 <body>
   <div id="app">
-    <h1 id="title">SHARDSWEEPER</h1>
+    <h1 class="title">SHARDSWEEPER</h1>
     <button v-on:click="reset">Generate a grid</button>
     <button v-if="ngPlusButton" v-on:click="generate">NG+{{ngPlus}}</button>
     <p id="score"> Score: {{score}} </p>
@@ -20,5 +20,15 @@
       <img v-for="(mine, index2) in mines[index]" :key="index2" :src="getPic(index, index2)" v-bind:alt="mines[index]"
         v-on:click="trigger(index, index2)">
     </p>
+    <div><span class="title">HOW TO PLAY</span><br>
+      Click on the buttons to try and reveal all the shards without letting Quarble<br>
+      steal all your shards. If you clear the whole grid without revealing Quarble,<br>
+      you may start NG+, to reset the grid but keep your score! How high can you go?<br>
+      <span class="title">THANKS</span><br>
+      Thanks to Boud for making the NG+ mode, and for the original Discord game!<br>
+      Thanks to all of Sabotage studios for the awesome main game<br>
+      ("The Messenger", if you somehow haven't heard of that gem yet)<br>
+      aaaaaand for not yelling at me for taking their Discord emotes without permission...
+    </div>
   </div>
 </body>
