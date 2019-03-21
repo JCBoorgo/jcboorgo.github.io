@@ -13,10 +13,12 @@
 <body>
   <div id="app">
     <h1 id="title">SHARDSWEEPER</h1>
-    <button v-on:click="generate">Generate a grid</button>
+    <button v-on:click="reset">Generate a grid</button>
+    <button v-if="ngPlusButton" v-on:click="generate">NG+{{ngPlus}}</button>
     <p id="score"> Score: {{score}} </p>
     <p v-for="(row, index) in mines" :key="index">
-      <img v-for="(mine, index2) in mines[index]" :key="index2" :src="getPic(index, index2)" v-bind:alt="mines[index]" v-on:click="trigger(index, index2)">
+      <img v-for="(mine, index2) in mines[index]" :key="index2" :src="getPic(index, index2)" v-bind:alt="mines[index]"
+        v-on:click="trigger(index, index2)">
     </p>
   </div>
 </body>
