@@ -22,7 +22,7 @@ var app = new Vue({
       this.generate();
       this.score = 0;
       this.lost = false;
-      this.ngplus = 0;
+      this.ngPlus = 0;
     },
     getPic: function (index1, index2) {
       if (this.clicked[index1][index2] === 0) {
@@ -39,7 +39,7 @@ var app = new Vue({
       if (!this.lost) {
         if (this.mines[index1][index2] === 1 && this.clicked[index1][index2] === 0) {
           this.score++;
-          if (this.score % 8 == 0) {
+          if (this.score % 8 === 0) {
             this.ngPlus++;
             this.ngPlusButton = true;
           }
