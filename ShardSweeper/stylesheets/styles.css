@@ -1,0 +1,31 @@
+@font-face {
+  font-family: Magic;
+  src: url("MagicSchoolOne.ttf")
+}
+
+@font-face {
+  font-family: SourceSansPro;
+  src: url("SourceSansPro-Regular.ttf")
+}
+
+* {
+  font-family: SourceSansPro;
+  outline: none;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+
+p {
+  margin: 0px;
+  margin-bottom: -4px;
+}
+
+#score {
+  margin: 8px;
+}
+
+#title {
+  font-family: Magic;
+  font-size: 50px;
+}
