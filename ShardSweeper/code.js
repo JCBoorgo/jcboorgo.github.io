@@ -11,7 +11,6 @@ var app = new Vue({
   methods: {
     generate: function () {
       var number = Math.floor(Math.random() * 9);
-      number = 0;
       for (var i = 0; i < 3; i++) {
         Vue.set(this.mines, i, [1, 1, 1]);
         Vue.set(this.clicked, i, [0, 0, 0]);
