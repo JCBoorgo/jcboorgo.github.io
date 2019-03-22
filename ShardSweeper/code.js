@@ -9,7 +9,7 @@ var app = new Vue({
     ngPlusButton: false
   },
   methods: {
-    generate: function () {
+    generate: function() {
       var number = Math.floor(Math.random() * 9);
       for (var i = 0; i < 3; i++) {
         Vue.set(this.mines, i, [1, 1, 1]);
@@ -17,14 +17,16 @@ var app = new Vue({
       }
       Vue.set(this.mines[Math.floor(number / 3)], number % 3, -1);
       this.ngPlusButton = false;
+      //Prevents softlocking
+      this.lost = false;
     },
-    reset: function () {
+    reset: function() {
       this.generate();
       this.score = 0;
       this.lost = false;
       this.ngPlus = 0;
     },
-    getPic: function (index1, index2) {
+    getPic: function(index1, index2) {
       if (this.clicked[index1][index2] === 0) {
         return "button.png";
       } else {
@@ -35,7 +37,7 @@ var app = new Vue({
         }
       }
     },
-    trigger: function (index1, index2) {
+    trigger: function(index1, index2) {
       if (!this.lost) {
         if (this.mines[index1][index2] === 1 && this.clicked[index1][index2] === 0) {
           this.score++;
