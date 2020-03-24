@@ -1,3 +1,4 @@
+/*global localStorage, document, setInterval, atob, btoa, window*/
 var Conjuration = function Conjuration(name, cost, description) {
   this.name = name;
   this.cost = cost;
@@ -59,7 +60,7 @@ var manaUpgrades = {
 };
 
 
-game = {
+var game = {
   coins: 0,
   focus: 0,
   maxMana: 100,
@@ -211,7 +212,7 @@ function onLoad() {
     document.getElementById("createCasterCost").style.display = "none";
 		document.getElementById("createCasterbtn").style.display = "none";
   }
-	
+
 }
 
 
@@ -428,7 +429,7 @@ function timeWarp() {
   game.currentMana -= game.spells.skipTimeSpell.cost;
   game.spells.skipTimeSpell.timesCast++;
   updateTimesCast();
-  timeToWarp = getSpellPower(game.spells.skipTimeSpell);
+  var timeToWarp = getSpellPower(game.spells.skipTimeSpell);
   game.coins += getCPS() * timeToWarp;
   game.focus += getFPS() * timeToWarp;
 }
@@ -436,7 +437,7 @@ function timeWarp() {
 
 
 function getCPS() {
-  coinMultiplier = 1;
+  var coinMultiplier = 1;
   if (game.spells.coinMultSpell.durationLeft > 0) {
     coinMultiplier = getSpellPower(game.spells.coinMultSpell) * Math.pow(1 + game.spells.coinMultSpell.timesCast / 10, 0.4);
   }
@@ -444,7 +445,7 @@ function getCPS() {
 }
 
 function getFPS() {
-  focusMultiplier = 1;
+  var focusMultiplier = 1;
   if (game.spells.focusMultSpell.durationLeft > 0) {
     focusMultiplier = 1 + getSpellPower(game.spells.focusMultSpell) * Math.pow(game.currentMana, 0.4) * 0.025;
   }
@@ -477,7 +478,7 @@ function getSpellEfficiency(spell, toggle) {
 
 
 function upgradePower(spellName) {
-  spellToUp = game.spells[spellName];
+  var spellToUp = game.spells[spellName];
   if (game.coins < spellToUp.powerCost) return false;
   if (spellToUp.duration - spellToUp.durationNeg < 1) return false;
   game.coins -= spellToUp.powerCost;
@@ -489,7 +490,7 @@ function upgradePower(spellName) {
 }
 
 function upgradeDuration(spellName) {
-  spellToUp = game.spells[spellName];
+  var spellToUp = game.spells[spellName];
   if (game.coins < spellToUp.durationCost) return false;
   if (spellToUp.cost + spellToUp.costNeg > game.maxMana) return false;
   game.coins -= spellToUp.durationCost;
@@ -501,7 +502,7 @@ function upgradeDuration(spellName) {
 }
 
 function upgradeCost(spellName) {
-  spellToUp = game.spells[spellName];
+  var spellToUp = game.spells[spellName];
   if (game.coins < spellToUp.costCost) return false;
   game.coins -= spellToUp.costCost;
   spellToUp.cost -= spellToUp.costPos;
@@ -527,7 +528,7 @@ function manaRegenUpgrade() {
 }
 
 function upgradeInstant(spellName) {
-  spellToUp = game.spells[spellName];
+  var spellToUp = game.spells[spellName];
   if (game.coins < spellToUp.powerCost) return false;
   game.coins -= spellToUp.powerCost;
   spellToUp.power += spellToUp.powerPlus;
@@ -707,8 +708,8 @@ function updateButtonLocks() {
 }
 
 function durationTextSet(id, spellName) {
-  spell = game.spells[spellName];
-  str = "Duration: " + ((spell.durationLeft === 0) ? formatTime(spell.duration) : formatTime(spell.durationLeft));
+  var spell = game.spells[spellName];
+  var str = "Duration: " + ((spell.durationLeft === 0) ? formatTime(spell.duration) : formatTime(spell.durationLeft));
   document.getElementById(id).innerHTML = str;
 }
 
@@ -724,7 +725,7 @@ function updateDurations() {
 // spellName is the name of the spell in game.spells (i.e. "coinSpell", "focusSpell", etc.)
 // Still gotta do coloring in green for good and red for bad
 function spellUpgTooltips(idPrefix, spellName) {
-  spell = game.spells[spellName];
+  var spell = game.spells[spellName];
   //Power, then Duration, then Cost
   document.getElementById(idPrefix + "PowerUpg").setAttribute('ach-tooltip', "Power -> " + formatValue(spell.power + spell.powerPos) + "\nDuration -> " + formatTime(spell.duration - spell.durationNeg) + "\nCost: " + formatValue(spell.powerCost) + " coins");
   document.getElementById(idPrefix + "DurationUpg").setAttribute('ach-tooltip', "Duration -> " + formatTime(spell.duration + spell.durationPos) + "\nMana cost -> " + formatValue(spell.cost + spell.costNeg) + "\nCost: " + formatValue(spell.durationCost) + " coins");
@@ -732,7 +733,7 @@ function spellUpgTooltips(idPrefix, spellName) {
 }
 
 function instantUpgTooltip(buttonName, spellName) {
-  spell = game.spells[spellName];
+  var spell = game.spells[spellName];
   document.getElementById(buttonName).setAttribute('ach-tooltip', "Power -> " + formatValue(spell.power + spell.powerPlus) + "\nCost: " + formatValue(spell.powerCost) + " coins");
 }
 
@@ -760,8 +761,8 @@ function updateTimesCast() {
 
 
 setInterval(function() {
-  thisUpdate = new Date().getTime();
-  delta = thisUpdate - game.lastUpdate;
+  var thisUpdate = new Date().getTime();
+  var delta = thisUpdate - game.lastUpdate;
   delta /= 1000;
 
   game.currentMana = Math.min(game.maxMana, game.currentMana + game.mps * delta);
